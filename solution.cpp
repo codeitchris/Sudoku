@@ -12,41 +12,49 @@ bool isnot0(int x) {
             return false;
         }
     }
+const int rows = 8;
+const int cols = 8;
 
-int solution(int value) {
+int solution(int array[rows][cols]) {
 
     int rowcount = 0;
     int colcount = 0;
 
-    const int rows = 8;
-    const int cols = 8;
-    int array[rows][cols];
-
     std::vector<int> temp;
 
+    for (rowcount; rowcount != 8; rowcount++) {
+        for (colcount; colcount !=8; colcount++) {
+            
+            for (int i = 0; i!= 8; i++) {
+                if(isnot0(array[rowcount][i]) && std::binary_search(temp.begin(), temp.end(), array[rowcount][i])) {
+                    temp.push_back(array[rowcount][i]);
+                }
+                if(isnot0(array[i][colcount]) && std::binary_search(temp.begin(), temp.end(), array[i][colcount])) {
+                    temp.push_back(array[i][colcount]);
+                }
 
-    for (int i = 0; i!= 8; i++) {
-        if(isnot0(array[0][i]) && std::binary_search(temp.begin(), temp.end(), array[0][i])) {
-            temp.push_back(array[0][i]);
-        }
-        if(isnot0(array[i][0])&& std::binary_search(temp.begin(), temp.end(), array[i][0])) {
-            temp.push_back(array[i][0]);
-        }
+            }
+                
+                if (temp.size() == 8) {
+                    int sum = std::accumulate(temp.begin(), temp.end(), decltype(temp)::value_type(0));
 
+                     int final = 45 - sum;
+                     array[rowcount][colcount] = final;
+            }   else{
+                temp.clear();
+            }
+        }
+        
     }
 
 
 
-    if (temp.size() == 8) {
-    int sum = std::accumulate(temp.begin(), temp.end(),
-                                decltype(temp)::value_type(0));
 
-    int final = 45 - sum;
-
-    }
 
 
 return 0;
+
+
 }
 
 /*

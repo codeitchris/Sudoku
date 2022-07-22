@@ -2,19 +2,24 @@
 #include <algorithm>
 #include <iterator>
 #include "solution.h"
+#include "completed.h"
 
 
 int main() {
     
-int a[] = {3, 6, 8, 33};
-  int x = 8;
-  bool exists = std::find(std::begin(a), std::end(a), x) != std::end(a);
-    
+    int newarray = [[5,0,9,0,0,0,4,0,0], [7,0,8,3,0,4,9,0,0], [6,0,1,0,0,0,7,3,0],[4,6,2,5,0,0,0,0,0], [3,8,5,7,2,0,6,4,9], [1,0,7,4,0,8,2,0,0], [2,0,0,1,0,0,0,0,4], [0,0,3,0,4,0,0,8,7], [0,7,0,0,5,3,0,0,6]]
 
+    while (completed(newarray) == flase) {
+      solution(newarray);
+    }
 
+    for (int k = 0; k !=8; k++) {
+      for (int p =0; p!=8; p++) {
+        std::cout << newarray[k][p] << " "; 
+        }
+        std::cout << std::endl;
 
-
-
+      }
 
     return 0;
 }
