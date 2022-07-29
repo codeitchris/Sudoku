@@ -2,59 +2,77 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <list>
 #include <numeric>
-#include "solution.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/solution.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/cornersandbox.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/guessing.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/rowcolguess.h"
 
-bool isnot0(int x) {
-        if (x != 0) {
-            return true;
-        } else {
-            return false;
+
+
+int counter = 0;
+bool completed(std::vector<std::vector<int> > filler) {
+    for (int k = 0; k < 9; k++) {
+        for (int p =0; p < 9; p++) {
+            if (filler[k][p] !=0) {
+                counter++;
+            } else {
+
+            }
         }
     }
-const int rows = 8;
-const int cols = 8;
+    if(counter == 81) {
+        return true;
+    } else {
+        counter = 0;
+        return false;
+    }
+}
 
-int solution(int array[rows][cols]) {
-
-    int rowcount = 0;
-    int colcount = 0;
-
-    std::vector<int> temp;
-
-    for (rowcount; rowcount != 8; rowcount++) {
-        for (colcount; colcount !=8; colcount++) {
-            
-            for (int i = 0; i!= 8; i++) {
-                if(isnot0(array[rowcount][i]) && std::binary_search(temp.begin(), temp.end(), array[rowcount][i])) {
+const int rows = 9;
+const int cols = 9;
+void solution(std::vector<std::vector<int> >& array) {
+    for (int rowcount = 0; rowcount < 9; rowcount++) {
+        rowguess(array, rowcount);
+        for (int colcount = 0; colcount < 9; colcount++) {
+            if(array[rowcount][colcount] == 0) {
+                for (int i = 0; i < 9; i++) {
+                    if(array[rowcount][i] != 0 && std::find(temp.begin(), temp.end(), array[rowcount][i]) == temp.end()) {
                     temp.push_back(array[rowcount][i]);
-                }
-                if(isnot0(array[i][colcount]) && std::binary_search(temp.begin(), temp.end(), array[i][colcount])) {
+                    }
+                    if(array[i][colcount] != 0 && std::find(temp.begin(), temp.end(), array[i][colcount]) == temp.end()) {
                     temp.push_back(array[i][colcount]);
                 }
-
             }
-                
-                if (temp.size() == 8) {
-                    int sum = std::accumulate(temp.begin(), temp.end(), decltype(temp)::value_type(0));
-
-                     int final = 45 - sum;
-                     array[rowcount][colcount] = final;
-            }   else{
+            
+            if (temp.size() == 8) {
+                int sum = std::accumulate(temp.begin(), temp.end(), 0);
+                int final = 45 - sum;
+                array[rowcount][colcount] = final;
                 temp.clear();
-            }
+            } else {
+                possibleanswer(array, rowcount, colcount);
+                if (possible.size() == 1) {
+                    array[rowcount][colcount] = *possible.begin();
+                } else {
+                    guessing(array);
+                }
+                colguess(array, colcount);
+                phistomefel(array);
+
+                possible.clear();
+                temp.clear();
+                box.clear();
+                boxwith0.clear();
+
+            } 
+
         }
         
     }
 
-
-
-
-
-
-return 0;
-
-
+}
 }
 
 /*

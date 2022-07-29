@@ -7,8 +7,9 @@
 #include <list>
 #include <numeric>
 
-bool completed(std::vector<std::vector<int> >);
-void solution(std::vector<std::vector<int> >& array);
+
+void rowguess(std::vector<std::vector<int> >& array, int rowval);
+void colguess(std::vector<std::vector<int> >& array, int colval);
 
 
 #endif
