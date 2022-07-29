@@ -4,10 +4,10 @@
 #include <iterator>
 #include <list>
 #include <numeric>
-#include "/Users/christophersebastian/Sudoku/Sudoku/solution.h"
-#include "/Users/christophersebastian/Sudoku/Sudoku/cornersandbox.h"
-#include "/Users/christophersebastian/Sudoku/Sudoku/guessing.h"
-#include "/Users/christophersebastian/Sudoku/Sudoku/rowcolguess.h"
+#include "solution.h"
+#include "cornersandbox.h"
+#include "guessing.h"
+#include "rowcolguess.h"
 
 
 

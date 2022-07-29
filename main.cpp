@@ -3,10 +3,10 @@
 #include <algorithm>
 #include <iterator>
 #include <numeric>
-#include "/Users/christophersebastian/Sudoku/Sudoku/solution.h"
-#include "/Users/christophersebastian/Sudoku/Sudoku/cornersandbox.h"
-#include "/Users/christophersebastian/Sudoku/Sudoku/guessing.h"
-#include "/Users/christophersebastian/Sudoku/Sudoku/rowcolguess.h"
+#include "solution.h"
+#include "cornersandbox.h"
+#include "guessing.h"
+#include "rowcolguess.h"
 
 int main() {
     std::vector<std::vector<int> > newarray = {{5,0,9,0,0,0,4,0,0}, 
