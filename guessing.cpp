@@ -5,10 +5,10 @@
 #include <iterator>
 #include <list>
 #include <numeric>
-#include "guessing.h"
-#include "cornersandbox.h"
-#include "solution.h"
-#include "rowcolguess.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/solution.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/cornersandbox.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/guessing.h"
+#include "/Users/christophersebastian/Sudoku/Sudoku/rowcolguess.h"
 
     std::vector<int> temp;
     std::list<int> possible;
