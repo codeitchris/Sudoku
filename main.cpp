@@ -148,38 +148,7 @@ void guessing(std::vector<std::vector<int> >& array) {
 
 }
 
-/*
-In the vector of vectors, each vector has a list of possible answers. 
 
-We need to check what values must be fulfilled in the box.
-
-If that cell is the only cell in the box that can fulfill a value, then we set that cell to be equal to 
-that value.
-
-
-This isn't correct. Guesses is being filled by the values in the row column system that aren't equal to
-zero and that haven't already been pushed back for each cell that is equal to zero in the box.
-
-This means that guesses is actually filled with values that are the opposite of guesses.
-Guesses is filled with the values that CAN NOT be used. 
-
-Loop through each temp vectore to find all the values that are needed, basically all values that
-aren't present in the temp vector.
-Pushes those into a vector called smallguess
-Then push small guess into guessesss
-
-New function rowguess and colgues
-
-rowguess will look at each empty cell in a row
-    Then it will look for the possible values of each empty cell.
-        Then it will compare the possible values of each empty cell
-            If an integer that is not already present in the row is found to be possible only at one cell in the row, then you
-            set that cell equal to that value. 
-
-We are going to add the first the Phistomefel Ring, then the X-win, and then the Y-wing. These will all be 
-their own functions, and we will call them each once through the main solution loop. 
-
-*/
 
 void rowguess(std::vector<std::vector<int> >& array, int rowval) {
     std::vector<int> positionalvals;
