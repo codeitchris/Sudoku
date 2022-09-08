@@ -5,7 +5,7 @@
 #include <list>
 #include <numeric>
 
-
+// Loop definition to deterimine if board is completed
 int counter = 0;
 bool completed(std::vector<std::vector<int> > filler) {
     for (int k = 0; k < 9; k++) {
@@ -25,15 +25,17 @@ bool completed(std::vector<std::vector<int> > filler) {
     }
 }
 
-
+// Global variables definined
 const int rows = 9;
 const int cols = 9;
+std::vector<int> temp;
+std::list<int> possible;
+std::vector<int> box;
+std::vector<int> countsss;
+std::vector<int> boxwith0;
 
-    std::vector<int> temp;
-    std::list<int> possible;
-    std::vector<int> box;
-    std::vector<int> countsss;
-    std::vector<int> boxwith0;
+
+//Function that determines the numbers in the surounding 3x3 box.
 void boxfun(std::vector<std::vector<int> > array, int shld, int work) {
     int x, y;
     x = shld;
@@ -68,6 +70,8 @@ void boxfun(std::vector<std::vector<int> > array, int shld, int work) {
     } 
 }
 
+
+//Function that determines if you can place a possible answer
 void possibleanswer(std::vector<std::vector<int> > array, int hope, int works) {
     for (int car = 1; car < 10; car++) {
         if(std::find(temp.begin(), temp.end(), car) == temp.end()) {
@@ -85,6 +89,7 @@ void possibleanswer(std::vector<std::vector<int> > array, int hope, int works) {
         }
 }
 
+// Function for outputing possible answers. 
 void guessing(std::vector<std::vector<int> >& array) {
     int numberofit = boxwith0.size()/2;
     int r = 0;
@@ -149,7 +154,7 @@ void guessing(std::vector<std::vector<int> >& array) {
 }
 
 
-
+// Function that checks the row of a cell to determine if a value can be placed. 
 void rowguess(std::vector<std::vector<int> >& array, int rowval) {
     std::vector<int> positionalvals;
     std::vector<int> presentrowval;
@@ -230,7 +235,7 @@ void rowguess(std::vector<std::vector<int> >& array, int rowval) {
     presentrowval.clear();
     positionalvals.clear();
 }
-
+// Function that checks the column of a cell to determine if a value can be placed. 
 void colguess(std::vector<std::vector<int> >& array, int colval) {
     std::vector<int> positionalvals;
     std::vector<int> presentcolval;
@@ -309,6 +314,7 @@ void colguess(std::vector<std::vector<int> >& array, int colval) {
     presentcolval.clear();
     positionalvals.clear();
 }
+// Helper function to determine possible values of a cell. 
 std::vector<std::vector<int> > notpossible;
 void pencilmarkings(std::vector<std::vector<int> >& array, int rownum, int colnum) { 
     
@@ -331,7 +337,9 @@ void pencilmarkings(std::vector<std::vector<int> >& array, int rownum, int colnu
         temp.clear();
         box.clear();
 }
-
+/* An advanced and complicated technique that requires knowledge of the 16 cells that make up the 
+corner of a sudoku board. From that, you can determine the 5 x 5 square box's values. 
+*/
 void phistomefel(std::vector<std::vector<int> >& array){
     std::list<int> corners;
     std::vector<int> innerbox;
@@ -466,15 +474,12 @@ void phistomefel(std::vector<std::vector<int> >& array){
 }
 
 
-
+/*Starts off by determining if a number can be placed based on the rows and columns of a cell.
+Calls prevously defined functions to see if that aditional information yields the ability to create
+a solution.
+*/
 
 void solution(std::vector<std::vector<int> >& array) {
-
-
-
-
-  
-
     for (int rowcount = 0; rowcount < 9; rowcount++) {
         rowguess(array, rowcount);
         for (int colcount = 0; colcount < 9; colcount++) {
@@ -517,15 +522,7 @@ void solution(std::vector<std::vector<int> >& array) {
 }
 }
 int main() {
-    std::vector<std::vector<int> > newarray = { {6,0,7,1,0,0,3,0,0}, 
-                                                {0,0,0,0,3,0,0,0,2}, 
-                                                {0,0,5,0,0,0,0,0,0},
-                                                {0,2,0,8,0,0,0,0,0},
-                                                {0,5,0,0,0,0,6,0,0}, 
-                                                {0,0,0,0,0,7,0,0,4}, 
-                                                {0,0,0,0,0,4,0,9,0}, 
-                                                {0,8,0,0,0,8,0,0,0}, 
-                                                {1,0,3,7,0,0,2,0,0} }; 
+    std::vector<std::vector<int> > newarray = {}; 
 
 
     while (completed(newarray) == false) {
